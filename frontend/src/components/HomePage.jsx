@@ -7,10 +7,10 @@ const HomePage = () => {
 
     const [currentSlide, setCurrentSlide] = useState(0);
     const images = [
-      '/src/images/cutting.jpg',
-      '/src/images/edge.jpg',
-      '/src/images/lawnmower.jpg',
-      '/src/images/wagon.jpg',
+      '/quality-lawn-care/src/images/cutting.jpg',
+      '/quality-lawn-care/src/images/edge.jpg',
+      '/quality-lawn-care/src/images/lawnmower.jpg',
+      '/quality-lawn-care/src/images/wagon.jpg',
     ];
   
     // Auto-rotate slides
