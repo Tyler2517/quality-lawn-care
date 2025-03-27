@@ -1,12 +1,40 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import './HomePage.css'; // You'll need to create this CSS file
 
 const HomePage = () => {
+
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const images = [
+      '/src/images/cutting.jpg',
+      '/src/images/edge.jpg',
+      '/src/images/lawnmower.jpg',
+      '/src/images/wagon.jpg',
+    ];
+  
+    // Auto-rotate slides
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setCurrentSlide((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+      }, 5000);
+      
+      return () => clearInterval(interval);
+    }, [images.length]);
+
   return (
     <div className="home-page">
       {/* Hero Section */}
       <section className="hero">
+        <div className="slideshow">
+          {images.map((img, index) => (
+            <div 
+              key={index} 
+              className={`slide ${index === currentSlide ? 'active' : ''}`}
+              style={{ backgroundImage: `url(${img})` }}
+            ></div>
+          ))}
+        </div>
         <div className="hero-content">
           <h1>Professional Lawn Care Services</h1>
           <p>Creating beautiful outdoor spaces for your home or business</p>
@@ -22,11 +50,11 @@ const HomePage = () => {
         <div className="container">
           <div className="intro-content">
             <h2>Welcome to Quality Lawn Care</h2>
-            <p>With over 15 years of experience, we provide exceptional lawn care and landscaping services to residential and commercial properties. Our team of professionals is dedicated to maintaining and enhancing the beauty of your outdoor spaces.</p>
+            <p>With over 30 years of experience, we provide exceptional lawn care and landscaping services to residential and commercial properties. Our team of professionals is dedicated to maintaining and enhancing the beauty of your outdoor spaces.</p>
             <Link to="/about" className="btn btn-tertiary">Learn More About Us</Link>
           </div>
           <div className="intro-image">
-            <img src="/images/lawn-care-team.jpg" alt="Quality Lawn Care Team" />
+            <img src={images[0]} alt="Quality Lawn Care Team" />
           </div>
         </div>
       </section>
