@@ -1,16 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import cuttingImg from '../images/cutting.jpg';
+import edgeImg from '../images/edge.jpg';
+import lawnmowerImg from '../images/lawnmower.jpg';
+import wagonImg from '../images/wagon.jpg';
 import './HomePage.css'; // You'll need to create this CSS file
 
 const HomePage = () => {
 
     const [currentSlide, setCurrentSlide] = useState(0);
     const images = [
-      '/quality-lawn-care/src/images/cutting.jpg',
-      '/quality-lawn-care/src/images/edge.jpg',
-      '/quality-lawn-care/src/images/lawnmower.jpg',
-      '/quality-lawn-care/src/images/wagon.jpg',
+      cuttingImg,
+      edgeImg,
+      lawnmowerImg,
+      wagonImg
     ];
   
     // Auto-rotate slides
